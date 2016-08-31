@@ -1,5 +1,5 @@
 body,html {
-	height: 95%;
+	height: 100%;
 }
 
 body {
@@ -13,6 +13,16 @@ h1 {
 	color: #000000;
 }
 
+h2 {
+	top: 50%;
+	font-size: 25px;
+	color: #000000;
+}
+
+p {
+	font-size: 35px;
+}
+
 #displayArea {
 	position: absolute;
 	margin: auto;
@@ -24,11 +34,18 @@ h1 {
 	left: 15%;
 }
 
+#content{
+	position: absolute;
+	margin: auto;
+	left: 11%;
+	top: 40%;
+	width: 80%;
+}
+
 button {
 	position: absolute;
 	top: 60%;
 	left: 25%;
-	height: 10%;
 	width: 50%;
-	font-size: 40px;
+	font-size: 200%;
 }
