@@ -10,24 +10,26 @@ body {
 
 h1 {
 	font-size: 100px;
-	color: #000000;
 }
 
 h2 {
 	top: 50%;
 	font-size: 25px;
-	color: #000000;
 }
 
 p {
 	font-size: 35px;
 }
 
+h1,h2,p {
+	color: #ffffff;
+}
+
 #displayArea {
 	position: absolute;
 	margin: auto;
 	text-align: center;
-	background-color: rgba(255,255,255,0.5);
+	background-color: rgba(102,0,102,0.7);
 	width: 70%;
 	height: 80%;
 	top: 10%;
