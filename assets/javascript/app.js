@@ -7,7 +7,7 @@ var gameData = [
 
 	{question:'Which 1986 Nintendo game is set in the fantasy land of Hyrule, and centres on a boy named Link?', answer1:'Turok', answer2:'Grand Turismo', answer3:'The Legend of Zelda', answer4:'Rachet and Clank', correctAnswer:'The Legend of Zelda'},
 
-	{question:"Jumpman's goal is to save the Lady from the giant ape in which 1981 arcade game?", answer1:'Zoro', answer2:'Megaman', answer3:'Jurassic Park', answer4:'Donkey Kong', correctAnswer:'Donkey Kong'},
+	{question:"Jumpman's goal is to save the Lady from the giant ape in which 1981 arcade game?", answer1:'Zorro', answer2:'Megaman', answer3:'Jurassic Park', answer4:'Donkey Kong', correctAnswer:'Donkey Kong'},
 
 	{question:'Who is the kid brother of Donkey Kong?', answer1:'Mickey Kong', answer2:'Kirby Kong', answer3:'Rickey Kong', answer4:'Diddy Kong', correctAnswer:'Diddy Kong'},
 
@@ -31,7 +31,7 @@ var gameData = [
 
 	{question:'The game Grand Theft Auto was released primarily for what gaming system?', answer1:'N.E.S', answer2:'Xbox', answer3:'Dreamcast', answer4:'Playstation', correctAnswer:'Playstation'},
 
-	{question:'Which James Bond film was made into a game for the Nintendo 64 console and later for the Wii console?', answer1:'Goldfinger', answer2:'Goldeneye', answer3:'Thunderball', answer4:'Moonraker', correctAnswer:'Goldfinger'},
+	{question:'Which James Bond film was made into a game for the Nintendo 64 console and later for the Wii console?', answer1:'Goldfinger', answer2:'Goldeneye', answer3:'Thunderball', answer4:'Moonraker', correctAnswer:'Goldenye'},
 
 	{question:'What video game console has the highest number of video game console sales of all time?', answer1:'Xbox 360', answer2:'Nintendo 64', answer3:'Wii', answer4:'Playstation 2', correctAnswer:'Playstation 2'},
 
@@ -97,6 +97,7 @@ function getQandA(){
 
 		timer();
 		$('#timeRemaining').html('<h2>Time Remaining: ' + timeRemaining + '</h2>');
+		clearPrompt();
 		$('#question').html(randomQandA.question);
 		$('#answer1').html(randomQandA.answer1);
 		$('#answer2').html(randomQandA.answer2);
@@ -107,10 +108,10 @@ function getQandA(){
 	} else {
 
 		$('#question').html('Here are your results');
-		$('#answer1').html('Incorrect Answers: ' + incorrectAnswers)
-		$('#answer2').html('Correct Answers: ' + correctAnswers)
-		$('#answer3').html('Unanswered: ' + unanswered)
-		$('#answer4').empty();
+		$('#prompt1').html('Incorrect Answers: ' + incorrectAnswers)
+		$('#prompt2').html('Correct Answers: ' + correctAnswers)
+		$('#prompt3').html('Unanswered: ' + unanswered)
+		clearAnswer();	
 		clearInterval(newQandA);
 		createResetButton();
 
@@ -135,10 +136,9 @@ function countdown(){
 	clearInterval(countdownTime);
 	unanswered++;
 	totalQuestions++;
-	$('#answer1').html('You are out of time');
-	$('#answer2').html('The correct answer is ' + randomQandA.correctAnswer);
-	$('#answer3').empty();
-	$('#answer4').empty();
+	$('#prompt1').html('You are out of time');
+	$('#prompt2').html('The correct answer is ' + randomQandA.correctAnswer);
+	clearAnswer();	
 	showNewQandA();
 
 	}	
@@ -146,15 +146,6 @@ function countdown(){
 
 function timer(){
 	countdownTime = setInterval(countdown, 1000);
-}
-
-function startOver(){
-
-	$('#startOverButton').on('click', function(){
-
-		getQandA();
-
-	})
 }
 
 function resetGame(){
@@ -165,7 +156,6 @@ function resetGame(){
 		totalQuestions = 0;
 		getQandA();
 		$('.resetButton').hide();
-
 }
 
 function createResetButton(){
@@ -177,18 +167,16 @@ function createResetButton(){
 
 }
 
-function checkAnswer(cAparamter) {
+function checkAnswer(answer) {
 
-	if (cAparamter == randomQandA.correctAnswer) {
+	if (answer == randomQandA.correctAnswer) {
 
 		clearInterval(countdownTime);
 		correctAnswers++;
 		totalQuestions++;
 		console.log(totalQuestions);
-		$('#answer1').html('Correct');
-		$('#answer2').empty();
-		$('#answer3').empty();
-		$('#answer4').empty();
+		$('#prompt1').html('Correct');
+		clearAnswer();	
 		showNewQandA();
 
 	} else {
@@ -197,13 +185,29 @@ function checkAnswer(cAparamter) {
 		incorrectAnswers++;
 		totalQuestions++;
 		console.log(totalQuestions);
-		$('#answer1').html('Incorrect');
-		$('#answer2').html('The correct answer is ' + randomQandA.correctAnswer);
-		$('#answer3').empty();
-		$('#answer4').empty();			
+		$('#prompt1').html('Incorrect');
+		$('#prompt2').html('The correct answer is ' + randomQandA.correctAnswer);
+		clearAnswer();			
 		showNewQandA();
 
 	}
+}
+
+function clearAnswer(){
+
+	$('#answer1').empty();
+	$('#answer2').empty();			
+	$('#answer3').empty();
+	$('#answer4').empty();
+
+}
+
+function clearPrompt(){
+
+	$('#prompt1').empty();
+	$('#prompt2').empty();			
+	$('#prompt3').empty();
+
 }
 
 $(document).on('click', '.resetButton', resetGame);
