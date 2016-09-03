@@ -20,6 +20,7 @@ var gameData = [
 	{question:'In video games, what colour is Pac-Man?', answer1:'Blue', answer2:'Green', answer3:'Yellow', answer4:'White', correctAnswer:'Yellow'}
 ]
 
+
 var randomQandA;
 var correctAnswers = 0;
 var incorrectAnswers = 0;
@@ -30,8 +31,6 @@ var countdownTime;
 var timeRemaining = 20;
 
 $(document).ready(function(){
-
-	$('#startOverButton').hide();
 		
 	$('#startButton').on('click', function(){
 
@@ -41,57 +40,29 @@ $(document).ready(function(){
 
 	$('#answer1').on('click', function(){
 
-		if ($(this).html() == randomQandA.correctAnswer) {
-
-			ifClickCorrect();
-
-		} else {
-
-			ifClickIncorrect();
-
-		}
+		var answer = $(this).html();
+		checkAnswer(answer);
 
 	})
 
 	$('#answer2').on('click', function(){
 
-		if ($(this).html() == randomQandA.correctAnswer) {
-
-			ifClickCorrect();
-
-		} else {
-
-			ifClickIncorrect();
-
-		}
+		var answer = $(this).html();
+		checkAnswer(answer);
 
 	})
 
 	$('#answer3').on('click', function(){
 
-		if ($(this).html() == randomQandA.correctAnswer) {
-
-			ifClickCorrect();
-
-		} else {
-
-			ifClickIncorrect();
-
-		}
+		var answer = $(this).html();
+		checkAnswer(answer);
 
 	})
 
 	$('#answer4').on('click', function(){
 
-		if ($(this).html() == randomQandA.correctAnswer) {
-
-			ifClickCorrect();
-
-		} else {
-
-			ifClickIncorrect();
-
-		}
+		var answer = $(this).html();
+		checkAnswer(answer);
 
 	})
 
@@ -99,12 +70,13 @@ $(document).ready(function(){
 
 function getQandA(){
 
-	if (totalQuestions < 8) {
+	if (totalQuestions <= 7) {
 
 		randomQandA = gameData[Math.floor(Math.random()*gameData.length)];
 		$('#startButton').hide();
-		timerReset();
+
 		timer();
+		$('#timeRemaining').html('<h2>Time Remaining: ' + timeRemaining + '</h2>');
 		$('#question').html(randomQandA.question);
 		$('#answer1').html(randomQandA.answer1);
 		$('#answer2').html(randomQandA.answer2);
@@ -119,7 +91,9 @@ function getQandA(){
 		$('#answer2').html('Correct Answers: ' + correctAnswers)
 		$('#answer3').html('Unanswered: ' + unanswered)
 		$('#answer4').empty();
-		$('#startOverButton').show();
+		clearInterval(newQandA);
+		createResetButton();
+
 
 	}
 
@@ -127,6 +101,7 @@ function getQandA(){
 
 function showNewQandA(){
 	newQandA = setInterval(getQandA, 3000);
+	timeRemaining = 20;
 }
 
 function countdown(){
@@ -153,35 +128,33 @@ function timer(){
 	countdownTime = setInterval(countdown, 1000);
 }
 
-function timerReset(){
-	timeRemaining = 20;
-}
+// function ifClickCorrect(){
 
-function ifClickCorrect(){
+// 	clearInterval(countdownTime);
+// 	correctAnswers++;
+// 	totalQuestions++;
+// 	console.log(totalQuestions);
+// 	$('#answer1').html('Correct');
+// 	$('#answer2').empty();
+// 	$('#answer3').empty();
+// 	$('#answer4').empty();
+// 	showNewQandA();
 
-	clearInterval(countdownTime);
-	correctAnswers++;
-	totalQuestions++;
-	console.log(totalQuestions);
-	$('#answer1').html('Correct');
-	$('#answer2').empty();
-	$('#answer3').empty();
-	$('#answer4').empty();
-	showNewQandA();
-}
+// }
 
-function ifClickIncorrect(){
+// function ifClickIncorrect(){
 
-	clearInterval(countdownTime);
-	incorrectAnswers++;
-	totalQuestions++;
-	console.log(totalQuestions);
-	$('#answer1').html('Incorrect');
-	$('#answer2').html('The correct answer is ' + randomQandA.correctAnswer);
-	$('#answer3').empty();
-	$('#answer4').empty();			
-	showNewQandA();
-}
+// 	clearInterval(countdownTime);
+// 	incorrectAnswers++;
+// 	totalQuestions++;
+// 	console.log(totalQuestions);
+// 	$('#answer1').html('Incorrect');
+// 	$('#answer2').html('The correct answer is ' + randomQandA.correctAnswer);
+// 	$('#answer3').empty();
+// 	$('#answer4').empty();			
+// 	showNewQandA();
+
+// }
 
 function startOver(){
 
@@ -192,17 +165,53 @@ function startOver(){
 	})
 }
 
-// function checkAnswer(x){
+function resetGame(){
 
-// 	if ($(this).html() == randomQandA.correctAnswer) {
+		correctAnswers = 0;
+		incorrectAnswers = 0;
+		unanswered = 0;
+		totalQuestions = 0;
+		getQandA();
+		$('.resetButton').hide();
 
-// 		correctAnswers++
+}
 
-// 	} else {
+function createResetButton(){
 
-// 		incorrectAnswers++
-// 	}
-// 	console.log(correctAnswers);
-// 	console.log($(this).html());
+	var x = $('<button>')
+    x.addClass('resetButton');
+    x.text('Start Over');
+    $('#displayArea').append(x);
 
-// }
+}
+
+function checkAnswer(cAparamter) {
+
+	if (cAparamter == randomQandA.correctAnswer) {
+
+		clearInterval(countdownTime);
+		correctAnswers++;
+		totalQuestions++;
+		console.log(totalQuestions);
+		$('#answer1').html('Correct');
+		$('#answer2').empty();
+		$('#answer3').empty();
+		$('#answer4').empty();
+		showNewQandA();
+
+	} else {
+
+		clearInterval(countdownTime);
+		incorrectAnswers++;
+		totalQuestions++;
+		console.log(totalQuestions);
+		$('#answer1').html('Incorrect');
+		$('#answer2').html('The correct answer is ' + randomQandA.correctAnswer);
+		$('#answer3').empty();
+		$('#answer4').empty();			
+		showNewQandA();
+
+	}
+}
+
+$(document).on('click', '.resetButton', resetGame);
