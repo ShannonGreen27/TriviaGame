@@ -45,8 +45,8 @@ h1,h2,p {
 #content{
 	position: absolute;
 	margin: auto;
-	left: 11%;
-	top: 40%;
+	left: 10%;
+	top: 25%;
 	width: 80%;
 }
 
@@ -55,5 +55,5 @@ button {
 	bottom: 10%;
 	left: 25%;
 	width: 50%;
-	font-size: 200%;
+	font-size: 40px;
 }

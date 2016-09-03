@@ -17,7 +17,27 @@ var gameData = [
 
 	{question:'In the computer game The Sims, how many Simoleons does each family start the game with?', answer1:'5,000', answer2:'20,000', answer3:'40,000', answer4:'10,000', correctAnswer:'20,000'},
 
-	{question:'In video games, what colour is Pac-Man?', answer1:'Blue', answer2:'Green', answer3:'Yellow', answer4:'White', correctAnswer:'Yellow'}
+	{question:'In video games, what colour is Pac-Man?', answer1:'Blue', answer2:'Green', answer3:'Yellow', answer4:'White', correctAnswer:'Yellow'},
+
+	{question:'Who is the main antagonist of Final Fantasy 7?', answer1:'Cloud Strife', answer2:'Don Corleone', answer3:'Sephiroth', answer4:'Zack Fair', correctAnswer:'Sephiroth'},
+
+	{question:'In what year was Sega Genesis released in North America?', answer1:'1999', answer2:'1989', answer3:'1975', answer4:'1991', correctAnswer:'1989'},
+
+	{question:'Which of the following video games takes place in a dystopian underwater city called Rapture?', answer1:'Half-Life', answer2:'God of War', answer3:'Fallout 3', answer4:'Bioshock', correctAnswer:'Bioshock'},
+
+	{question:'E. Honda, Dhalsim and Chun Li are all characters from what video game series?', answer1:'Teenage Mutant Ninja Turtles', answer2:'Street Fighter', answer3:'Battletoads', answer4:'Mortal Kombat', correctAnswer:'Street Fighter'},
+
+	{question:'What color is the ring of death on an Xbox that signifies a hardware failure?', answer1:'Blue', answer2:'Yellow', answer3:'Green', answer4:'Red', correctAnswer:'Red'},
+
+	{question:'The game Grand Theft Auto was released primarily for what gaming system?', answer1:'N.E.S', answer2:'Xbox', answer3:'Dreamcast', answer4:'Playstation', correctAnswer:'Playstation'},
+
+	{question:'Which James Bond film was made into a game for the Nintendo 64 console and later for the Wii console?', answer1:'Goldfinger', answer2:'Goldeneye', answer3:'Thunderball', answer4:'Moonraker', correctAnswer:'Goldfinger'},
+
+	{question:'What video game console has the highest number of video game console sales of all time?', answer1:'Xbox 360', answer2:'Nintendo 64', answer3:'Wii', answer4:'Playstation 2', correctAnswer:'Playstation 2'},
+
+	{question:'Alongside Universal Interactive Studios, who else developed Crash Bandicoot, the video game?', answer1:'Lost Boys Games', answer2:'Insomniac', answer3:'Naughty Dog', answer4:'Sucker Punch Productions', correctAnswer:'Naughty Dog'},
+
+	{question:'The Nintendo DS Lite is available in 6 different languages. What language is it not available in?', answer1:'Japanese', answer2:'Italian', answer3:'Spanish', answer4:'Indian', correctAnswer:'Indian'}
 ]
 
 
