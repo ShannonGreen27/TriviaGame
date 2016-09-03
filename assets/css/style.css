@@ -21,6 +21,12 @@ p {
 	font-size: 35px;
 }
 
+p:hover { 
+   background-color: #ffffff;
+   font-size: 40px;
+   color: #000000;
+}
+
 h1,h2,p {
 	color: #ffffff;
 }
@@ -46,7 +52,7 @@ h1,h2,p {
 
 button {
 	position: absolute;
-	top: 60%;
+	bottom: 10%;
 	left: 25%;
 	width: 50%;
 	font-size: 200%;

@@ -128,34 +128,6 @@ function timer(){
 	countdownTime = setInterval(countdown, 1000);
 }
 
-// function ifClickCorrect(){
-
-// 	clearInterval(countdownTime);
-// 	correctAnswers++;
-// 	totalQuestions++;
-// 	console.log(totalQuestions);
-// 	$('#answer1').html('Correct');
-// 	$('#answer2').empty();
-// 	$('#answer3').empty();
-// 	$('#answer4').empty();
-// 	showNewQandA();
-
-// }
-
-// function ifClickIncorrect(){
-
-// 	clearInterval(countdownTime);
-// 	incorrectAnswers++;
-// 	totalQuestions++;
-// 	console.log(totalQuestions);
-// 	$('#answer1').html('Incorrect');
-// 	$('#answer2').html('The correct answer is ' + randomQandA.correctAnswer);
-// 	$('#answer3').empty();
-// 	$('#answer4').empty();			
-// 	showNewQandA();
-
-// }
-
 function startOver(){
 
 	$('#startOverButton').on('click', function(){
